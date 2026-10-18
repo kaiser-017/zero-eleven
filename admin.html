@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zero 11 | Owner dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="admin" class="adm">
+<div id="gate" class="gate"></div>
+
+<div id="app" hidden>
+<div class="top"><a class="brand" href="index.html">ZERO 11</a><span class="note">Owner dashboard</span>
+ <div class="tabs" id="tabs"><button data-t="Products" class="on">Products</button><button data-t="Reviews">Reviews</button><button data-t="Store">Store details</button><button data-t="Security">Security</button><button id="lo">Log out</button></div></div>
+<main>
+<section id="t-Products">
+ <div class="bar"><h2>Products</h2><button class="btn" id="np">Add product</button></div>
+ <p class="bn" id="smp" hidden>Sample products are loaded. Edit or delete them, then add your real catalogue.</p>
+ <div class="tw"><table><thead><tr><th></th><th>Product</th><th>Price</th><th>In stock</th><th>Status</th><th></th></tr></thead><tbody id="pl"></tbody></table></div>
+ <p class="note">After a sale is confirmed on WhatsApp, open Edit and press -1 next to the sold size and colour to update stock.</p>
+</section>
+
+<section id="t-Reviews" hidden>
+ <div class="bar"><h2>Reviews</h2></div>
+ <p class="note" style="margin:0 0 16px">Add only genuine reviews from real customers. The Reviews section stays hidden on the website until at least one review is published.</p>
+ <form id="rf"><div class="two"><label>Customer name<input name="n" required maxlength="40"></label><label>City (optional)<input name="c" maxlength="40"></label></div>
+ <label>Rating<select name="r"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>
+ <label>Review<textarea name="t" rows="3" required maxlength="300"></textarea></label><button class="btn">Add review</button></form>
+ <h3 style="margin:32px 0 12px;font-size:20px">All reviews</h3><div id="rl"></div>
+</section>
+
+<section id="t-Store" hidden>
+ <div class="bar"><h2>Store details</h2></div>
+ <form id="sf" style="max-width:560px"><label>Store name<input name="sname" required></label><label>Tagline<input name="tagline"></label>
+ <label>WhatsApp number with country code, e.g. 919876543210<input name="phone" required inputmode="numeric"></label>
+ <label>Address<textarea name="address" rows="2"></textarea></label><label>Instagram link<input name="instagram"></label>
+ <label>Shipping and policy note<textarea name="ship" rows="3"></textarea></label><button class="btn">Save store details</button></form>
+ <h3 style="margin:36px 0 6px;font-size:20px">Backup</h3><p class="note" style="margin:0 0 12px">Data is saved in this browser. Download a backup regularly.</p>
+ <div class="act" style="justify-content:flex-start;margin:0"><button id="ex">Download backup</button><label class="ibtn">Restore backup<input type="file" id="im" accept=".json" hidden></label></div>
+</section>
+
+<section id="t-Security" hidden>
+ <div class="bar"><h2>Security</h2></div>
+ <form id="cf" style="max-width:400px"><label>Current password<input type="password" name="cur" required autocomplete="current-password"></label>
+ <label>New password (at least 8 characters)<input type="password" name="nw" minlength="8" required autocomplete="new-password"></label>
+ <p class="err" id="ce"></p><button class="btn">Change password</button></form>
+ <p class="note">Changing your password also creates a new recovery key.</p>
+</section>
+</main>
+</div>
+
+<dialog id="pf"><form id="pform"><h2 id="pt">Add product</h2>
+ <label>Name<input name="pname" required maxlength="80"></label>
+ <div class="two"><label>Category<select name="cat"></select></label><label>Price (&#8377;)<input name="price" type="number" min="1" required></label></div>
+ <label>Description<textarea name="desc" rows="3" maxlength="400"></textarea></label>
+ <label>Photos (up to 5)<input type="file" id="ph" accept="image/*" multiple></label><div class="pv" id="pv"></div>
+ <div class="vh"><b>Stock by size and colour</b><button type="button" id="av">Add size</button></div><div id="vr"></div>
+ <div class="two" style="margin-top:12px"><label class="ck"><input type="checkbox" name="isNew"> New arrival</label><label class="ck"><input type="checkbox" name="published"> Published on website</label></div>
+ <div class="act"><button type="button" id="pc">Cancel</button><button class="btn">Save product</button></div></form></dialog>
+
+<dialog id="key"><div id="kd"><h2>Save your recovery key</h2>
+ <p class="note" style="margin:0">This key is shown only once. It is the only way to reset a forgotten password. Write it down and keep it somewhere safe.</p>
+ <div class="kv" id="kv"></div><div class="act"><button class="btn" id="kok">I have saved it</button></div></div></dialog>
+
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
